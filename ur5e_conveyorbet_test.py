@@ -548,10 +548,13 @@ class Box:
         return check_collision(res)
 
 
-    def pushable_sides(self): # TODO： PUsh IS WRONG
-        # Return pushable sides else None
-        # Requirements: No obstacles around the midpoint next to the side
-        # We do not consider insert-push (push from the side where there is an obstacle)
+    def pushable_sides(self): 
+        # TODO： PUSH when there is no obstacles at all on the side, current implementation 
+        # checks whether there is obstacle next to the midpoint
+        
+        '''Return pushable sides else None
+        Requirements: No obstacles around the midpoint next to the side
+        We do not consider insert-push (push from the side where there is an obstacle)'''
         res = []
         if self.front == None and self.back == None:
             res.append("front")
@@ -806,4 +809,3 @@ state = State(boxes[0], boxes)
 state.update_whole_environment()
 solvers = Solvers(state)
 solvers.planner(boxes[0])
-# check_collision()
